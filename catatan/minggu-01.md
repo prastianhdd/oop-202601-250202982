@@ -44,5 +44,11 @@ Saya perlu memahami seluruh codebase atau repository ini untuk mata kuliah OOP 2
 
 ## Dokumentasi
 ![Verfikasi Tools](assets/minggu-01-1.png)
+
+---
+
 ![Bukti Running .\scripts\uji.ps1](assets/minggu-01-2.png)
+
+---
+
 ![Bukti Output di mahasiswa.properties](assets/minggu-01-3.png)
