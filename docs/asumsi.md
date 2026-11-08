@@ -28,3 +28,11 @@ Salin setiap pertanyaan ambigu (nomor 1 sampai 7) ke sini dan jawab. Contoh:
 ## Asumsi lain
 
 Tambahkan di sini keputusan lain yang Anda ambil: rumus denda progresif, perubahan skema database, format error API, dan seterusnya.
+
+## A-02: denda progresif setelah tujuh hari
+
+- Pertanyaan: Bagaimana rumus denda progresif pada minggu 5?
+- Keputusan: Hari 1–7 memakai tarif harian biasa sesuai jenis aset. Setiap hari setelah hari ke-7 memakai dua kali tarif harian. Rumusnya `aset.hitungDenda(hari) + aset.hitungDenda(Math.max(0, hari - 7))`.
+- Alasan: Ambang tujuh hari dipilih mahasiswa saat menentukan aturan minggu 5. Penambahan hanya berlaku untuk hari setelah batas tersebut, sehingga tujuh hari pertama tidak ikut dihitung ulang dengan tarif ganda.
+- Dampak ke kode: `DendaProgresif.hitung`. Nol hari menghasilkan nol, hari negatif ditolak oleh perhitungan aset. Denda tidak lebih murah dari flat dan terus bertambah ketika hari bertambah. Hari ke-30 dikenai 53 kali tarif harian (7 + 23 × 2), bukan 60 kali. 
+
