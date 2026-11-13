@@ -1,0 +1,26 @@
+sequenceDiagram
+    actor Peminjam
+    participant Sistem
+    participant Aset
+    participant Jadwal
+
+    Peminjam->>Sistem: Ajukan peminjaman
+    Sistem->>Aset: bisaDipinjam()
+    Aset-->>Sistem: hasil pemeriksaan
+
+    alt Aset tidak bisa dipinjam
+        Sistem-->>Peminjam: Pengajuan ditolak
+    else Aset bisa dipinjam
+        Sistem->>Jadwal: bentrok(pengajuan)
+
+        alt Tidak bentrok
+            Jadwal-->>Sistem: false
+            Sistem->>Jadwal: tambah(pengajuan)
+            Sistem-->>Peminjam: Pengajuan berhasil
+        else Bentrok
+            Jadwal-->>Sistem: true
+            Sistem-->>Peminjam: Pengajuan ditolak karena bentrok
+        end
+    end
+
+    Note over Jadwal: bentrok() baru diimplementasikan pada minggu 7
